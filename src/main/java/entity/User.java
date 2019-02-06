@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "Type User", length = 10, discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "TypeUser", length = 10, discriminatorType = DiscriminatorType.STRING)
 @Table(name = "Users")
 //@NamedQueries(
 //        @NamedQuery(name = User.FIND_BY_LOGIN_QUERY, query = "from User where login = :lll")
@@ -22,10 +22,10 @@ public class User {
     @Column(nullable = false, unique = true)
     private String login;
 
-    @Column(nullable = false)
+    @Column //(nullable = false)
     private String firstName;
 
-    @Column(nullable = false)
+    @Column //(nullable = false)
     private String secondName;
 
     public long getId() {
@@ -48,16 +48,16 @@ public class User {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String first) {
+        this.firstName = first;
     }
 
     public String getSecondName() {
         return secondName;
     }
 
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
+    public void setSecondName(String second) {
+        this.secondName = second;
     }
 
 

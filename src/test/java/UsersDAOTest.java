@@ -15,19 +15,19 @@ public class UsersDAOTest {
 
     private EntityManagerFactory factory;
     private EntityManager em;
-    private UsersDAO dao;
+    private UsersDAO users;
 
     @Before
     public void setup() {
         factory = Persistence.createEntityManagerFactory("TestPersistenceUnit");
         em = factory.createEntityManager();
-        dao = new UsersDAO(em);
+        users = new UsersDAO(em);
     }
 
     @Test
     public void testCreateOperator() {
         em.getTransaction().begin();
-        Operator operator = dao.createOperator("operator1");
+        Operator operator = users.createOperator("operator1");
         em.getTransaction().commit();
 
         assertNotEquals(0L, operator.getId());

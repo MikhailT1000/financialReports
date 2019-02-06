@@ -16,11 +16,11 @@ public class AllData {
     private Operator operator;
 
 //    @Temporal(TemporalType.DATE)
-    @Column(name = "Purchase Date")
+    @Column(name = "PurchaseDate")
     private String purchaseDate;
 
 //    @Temporal(TemporalType.DATE)
-    @Column(name = "Date of Sale")
+    @Column(name = "DateOfSale")
     private String saleDate;
 
     @Column(name = "Brand")
@@ -35,7 +35,7 @@ public class AllData {
     @Column(name = "Discount")
     private int discount;
 
-    @Column(name = "Cost Price")
+    @Column(name = "CostPrice")
     private double costPrice;
 
     @Column(name = "Type")
