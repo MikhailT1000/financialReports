@@ -15,13 +15,13 @@ public class AllData {
     @ManyToOne(fetch = FetchType.LAZY)
     private Operator operator;
 
-//    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     @Column(name = "PurchaseDate")
-    private String purchaseDate;
+    private Date purchaseDate;
 
-//    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     @Column(name = "DateOfSale")
-    private String saleDate;
+    private Date saleDate;
 
     @Column(name = "Brand")
     private String brand;
@@ -29,11 +29,14 @@ public class AllData {
     @Column(name = "Model")
     private String model;
 
-    @Column(name = "Price")
-    private double price;
+    @Column(name = "PurchasePrice")
+    private double purchasePrice;
+
+    @Column(name = "SalePrice")
+    private double salePrice;
 
     @Column(name = "Discount")
-    private int discount;
+    private double discount;
 
     @Column(name = "CostPrice")
     private double costPrice;
@@ -48,12 +51,13 @@ public class AllData {
 
     }
 
-    public AllData(String purchaseDate, String saleDate, String brand, String model, double price, int discount, double costPrice, String type, int quantity) {
+    public AllData(Date purchaseDate, Date saleDate, String brand, String model, double purchasePrice, double salePrice, double discount, double costPrice, String type, int quantity) {
         this.purchaseDate = purchaseDate;
         this.saleDate = saleDate;
         this.brand = brand;
         this.model = model;
-        this.price = price;
+        this.purchasePrice = purchasePrice;
+        this.salePrice = salePrice;
         this.discount = discount;
         this.costPrice = costPrice;
         this.type = type;
@@ -68,19 +72,19 @@ public class AllData {
         this.id = id;
     }
 
-    public String getPurchaseDate() {
+    public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(String dateBuy) {
+    public void setPurchaseDate(Date dateBuy) {
         this.purchaseDate = dateBuy;
     }
 
-    public String getSaleDate() {
+    public Date getSaleDate() {
         return saleDate;
     }
 
-    public void setSaleDate(String dateSell) {
+    public void setSaleDate(Date dateSell) {
         this.saleDate = dateSell;
     }
 
@@ -100,19 +104,27 @@ public class AllData {
         this.model = model;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPurchasePrice() {
+        return purchasePrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPurchasePrice(double price) {
+        this.purchasePrice = purchasePrice;
     }
 
-    public int getDiscount() {
+    public double getSalePrice() {
+        return salePrice;
+    }
+
+    public void setSalePrice(double salePrice) {
+        this.salePrice = salePrice;
+    }
+
+    public double getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(double discount) {
         this.discount = discount;
     }
 

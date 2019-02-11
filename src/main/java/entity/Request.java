@@ -13,6 +13,8 @@ public class Request {
     @ManyToOne
     private Manager manager;
 
+    private int year;
+
     public long getId() {
         return id;
     }
@@ -27,5 +29,13 @@ public class Request {
 
     public void setManager(Manager manager) {
         this.manager = manager;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 }

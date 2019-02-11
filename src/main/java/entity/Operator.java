@@ -13,7 +13,9 @@ public class Operator extends User {
     public Operator() {
     }
 
-    public Operator(String login) {
+    public Operator(String firstName, String secondName, String login) {
+        setFirstName(firstName);
+        setSecondName(secondName);
         setLogin(login);
     }
 

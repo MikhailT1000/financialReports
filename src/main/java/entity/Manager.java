@@ -10,7 +10,9 @@ public class Manager extends User {
     public Manager() {
     }
 
-    public Manager(String login) {
+    public Manager(String firstName, String secondName, String login) {
+        setFirstName(firstName);
+        setSecondName(secondName);
         setLogin(login);
     }
 }

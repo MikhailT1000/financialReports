@@ -7,12 +7,12 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TypeUser", length = 10, discriminatorType = DiscriminatorType.STRING)
 @Table(name = "Users")
-//@NamedQueries(
-//        @NamedQuery(name = User.FIND_BY_LOGIN_QUERY, query = "from User where login = :lll")
-//)
+@NamedQueries(
+        @NamedQuery(name = User.FIND_BY_LOGIN_QUERY, query = "from User where login = :lll")
+)
 public class User {
 
-//    public static final String FIND_BY_LOGIN_QUERY = "findByLogin";
+    public static final String FIND_BY_LOGIN_QUERY = "findByLogin";
 
     @Id
     @GeneratedValue
