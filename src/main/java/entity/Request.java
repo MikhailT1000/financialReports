@@ -13,6 +13,7 @@ public class Request {
     @ManyToOne
     private Manager manager;
 
+    @Column
     private int year;
 
     public long getId() {

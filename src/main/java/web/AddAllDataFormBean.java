@@ -1,92 +1,46 @@
-package entity;
+package web;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.Date;
 
-@Entity
-@Table(name = "Data")
-public class AllData {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "Id")
-    private long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "operator_fk")
-    private Operator operator;
+public class AddAllDataFormBean {
+//    @Pattern(regexp = "[0-9]+(:[0-9]+)+", message = "Неверный формат кадастрового номера.")
+//    private String cadNumber;
+//    private String title;
+//    private String address;
+//    private String name;
+//    private String passportNumber;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "PurchaseDate")
     private Date purchaseDate;
-
     @Temporal(TemporalType.DATE)
-    @Column(name = "DateOfSale")
     private Date saleDate;
-
-    @Column(name = "Brand")
     private String brand;
-
-    @Column(name = "Model")
     private String model;
-
-    @Column(name = "PurchasePrice")
     private double purchasePrice;
-
-    @Column(name = "SalePrice")
     private double salePrice;
-
-    @Column(name = "Discount")
     private double discount;
-
-    @Column(name = "CostPrice")
     private double costPrice;
-
-    @Column(name = "Type")
     private String type;
-
-    @Column(name = "Quantity")
     private int quantity;
-
-    public AllData (){
-
-    }
-
-    public AllData(Date purchaseDate, Date saleDate, String brand, String model, double purchasePrice, double salePrice, double discount, double costPrice, String type, int quantity) {
-        this.purchaseDate = purchaseDate;
-        this.saleDate = saleDate;
-        this.brand = brand;
-        this.model = model;
-        this.purchasePrice = purchasePrice;
-        this.salePrice = salePrice;
-        this.discount = discount;
-        this.costPrice = costPrice;
-        this.type = type;
-        this.quantity = quantity;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    private String name;
+    private String passportNumber;
 
     public Date getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Date dateBuy) {
-        this.purchaseDate = dateBuy;
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
     }
 
     public Date getSaleDate() {
         return saleDate;
     }
 
-    public void setSaleDate(Date dateSell) {
-        this.saleDate = dateSell;
+    public void setSaleDate(Date saleDate) {
+        this.saleDate = saleDate;
     }
 
     public String getBrand() {
@@ -109,7 +63,7 @@ public class AllData {
         return purchasePrice;
     }
 
-    public void setPurchasePrice(double price) {
+    public void setPurchasePrice(double purchasePrice) {
         this.purchasePrice = purchasePrice;
     }
 
@@ -153,11 +107,19 @@ public class AllData {
         this.quantity = quantity;
     }
 
-    public Operator getOperator() {
-        return operator;
+    public String getName() {
+        return name;
     }
 
-    public void setOperator(Operator operator) {
-        this.operator = operator;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassportNumber() {
+        return passportNumber;
+    }
+
+    public void setPassportNumber(String passportNumber) {
+        this.passportNumber = passportNumber;
     }
 }

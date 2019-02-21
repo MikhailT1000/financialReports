@@ -2,42 +2,47 @@ import DAO.AllDataDAO;
 import DAO.UsersDAO;
 import entity.AllData;
 import entity.Operator;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfiguration.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class AllDataDAOTest {
-    private EntityManagerFactory factory;
+    @Autowired
     private EntityManager em;
+    @Autowired
     private UsersDAO users;
+    @Autowired
     private AllDataDAO allDatas;
 
-    @Before
-    public void setup() {
-        factory = Persistence.createEntityManagerFactory("TestPersistenceUnit");
-        em = factory.createEntityManager();
-        users = new UsersDAO(em);
-        allDatas = new AllDataDAO(em);
-    }
-
-    @After
-    public void stop() {
-        if (em != null) {
-            em.close();
-        }
-        if (factory != null) {
-            factory.close();
-        }
-    }
+//    @Before
+//    public void setup() {
+//        factory = Persistence.createEntityManagerFactory("TestPersistenceUnit");
+//        em = factory.createEntityManager();
+//        users = new UsersDAO(em);
+//        allDatas = new AllDataDAO(em);
+//    }
+//
+//    @After
+//    public void stop() {
+//        if (em != null) {
+//            em.close();
+//        }
+//        if (factory != null) {
+//            factory.close();
+//        }
+//    }
 
     @Test
     public void testCreateAllData() {
@@ -63,7 +68,7 @@ public class AllDataDAOTest {
     }
 
     @Test
-    public void testFindEngineersSubjs() {
+    public void testFindOperatorsAllData() {
         em.getTransaction().begin();
 
         Date purchaseDate = new Date (2018,10,17);

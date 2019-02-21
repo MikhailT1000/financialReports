@@ -4,6 +4,11 @@ import entity.User;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,18 +17,15 @@ import javax.persistence.Persistence;
 import static org.junit.Assert.*;
 import static org.junit.Assert.fail;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfiguration.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class UsersDAOTest {
-
-    private EntityManagerFactory factory;
+    @Autowired
     private EntityManager em;
-    private UsersDAO users;
 
-    @Before
-    public void setup() {
-        factory = Persistence.createEntityManagerFactory("TestPersistenceUnit");
-        em = factory.createEntityManager();
-        users = new UsersDAO(em);
-    }
+    @Autowired
+    private UsersDAO users;
 
     @Test
     public void testCreateOperator() {
@@ -44,16 +46,6 @@ public class UsersDAOTest {
         assertNotNull(foundByLogin);
         if (!(foundByLogin instanceof Operator)) {
             fail("Expected an instance of Operator but " + foundByLogin.getClass().getSimpleName() + " found");
-        }
-    }
-
-    @After
-    public void stop() {
-        if (em != null) {
-            em.close();
-        }
-        if (factory != null) {
-            factory.close();
         }
     }
 

@@ -7,7 +7,15 @@ import java.util.List;
 @DiscriminatorValue("Operator")
 public class Operator extends User {
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY,
+            //            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
+            mappedBy = "operator"
+    )
+//    @JoinTable(
+//            name = "operators_allDatas_map",
+//            joinColumns = @JoinColumn(name = "operator_fk", referencedColumnName = "id"),
+//            inverseJoinColumns = @JoinColumn(name = "allData_fk", referencedColumnName = "id")
+//    )
     private List<AllData> allData;
 
     public Operator() {
